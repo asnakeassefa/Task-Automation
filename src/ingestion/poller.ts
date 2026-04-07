@@ -3,6 +3,9 @@ import { simpleParser, type ParsedMail } from 'mailparser';
 import { config } from '../config/index.js';
 import { parseEmail } from '../parser/emailParser.js';
 import { enqueueEmailJob } from '../queue/producer.js';
+import { logger } from '../logger.js';
+
+const log = logger.child({ component: 'poller' });
 
 let intervalId: ReturnType<typeof setInterval> | null = null;
 let running = false;
@@ -31,11 +34,11 @@ async function pollOnce(): Promise<void> {
       const uids = searchResult || [];
 
       if (uids.length === 0) {
-        console.log('[poller] No new emails');
+        log.debug('No new emails');
         return;
       }
 
-      console.log(`[poller] Found ${uids.length} unseen email(s), processing...`);
+      log.info({ count: uids.length }, `Found ${uids.length} unseen email(s), processing...`);
 
       for (const uid of uids) {
         const message = await client.fetchOne(uid, { source: true });
@@ -59,7 +62,7 @@ async function pollOnce(): Promise<void> {
         });
 
         await enqueueEmailJob(email);
-        console.log(`[poller] Enqueued: "${email.subject}"`);
+        log.info({ subject: email.subject, messageId: email.messageId }, `Enqueued: "${email.subject}"`);
 
         await client.messageFlagsAdd(uid, ['\\Seen']);
       }
@@ -69,14 +72,14 @@ async function pollOnce(): Promise<void> {
 
     await client.logout();
   } catch (err) {
-    console.error(`[poller] Error: ${err instanceof Error ? err.message : err}`);
+    log.error({ err }, 'Poll cycle failed');
   } finally {
     running = false;
   }
 }
 
 export async function startPoller(): Promise<void> {
-  console.log(`[poller] Connecting as ${config.gmailUser}, polling every ${config.gmailPollIntervalMs / 1000}s...`);
+  log.info({ user: config.gmailUser, intervalMs: config.gmailPollIntervalMs }, `Connecting as ${config.gmailUser}, polling every ${config.gmailPollIntervalMs / 1000}s...`);
 
   await pollOnce();
 
@@ -87,6 +90,6 @@ export function stopPoller(): void {
   if (intervalId) {
     clearInterval(intervalId);
     intervalId = null;
-    console.log('[poller] Poller stopped');
+    log.info('Poller stopped');
   }
 }

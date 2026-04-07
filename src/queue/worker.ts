@@ -6,27 +6,31 @@ import { extractTaskFromEmail } from '../ai/geminiClient.js';
 import { validateExtractedTask } from '../validator/taskSchema.js';
 import { createAsanaTask } from '../asana/client.js';
 import { alreadyProcessed, markProcessed } from '../dedup/redis.js';
+import { logger } from '../logger.js';
+
+const log = logger.child({ component: 'worker' });
 
 async function processEmailJob(job: Job<RawEmailPayload>): Promise<void> {
   const email = job.data;
   const label = email.subject || email.messageId;
+  const fallback = { subject: email.subject, from: email.from, date: email.date };
 
-  if (await alreadyProcessed(email.messageId)) {
-    console.log(`[worker] Skipped (duplicate): "${label}"`);
+  if (await alreadyProcessed(email.messageId, fallback)) {
+    log.info({ subject: label, jobId: job.id }, `Skipped (duplicate): "${label}"`);
     return;
   }
 
-  console.log(`[worker] Processing: "${label}"`);
+  log.info({ subject: label, jobId: job.id }, `Processing: "${label}"`);
 
   const prompt = buildExtractionPrompt(email);
   const rawOutput = await extractTaskFromEmail(prompt);
   const extracted = validateExtractedTask(rawOutput);
 
-  console.log(`[worker] Gemini extracted task: "${extracted.task_name}" (actionable=${extracted.is_actionable})`);
+  log.info({ taskName: extracted.task_name, isActionable: extracted.is_actionable }, `Gemini extracted: "${extracted.task_name}" (actionable=${extracted.is_actionable})`);
 
   if (!extracted.is_actionable) {
-    console.log(`[worker] Skipped: not actionable`);
-    await markProcessed(email.messageId);
+    log.info({ subject: label }, 'Skipped: not actionable');
+    await markProcessed(email.messageId, fallback);
     return;
   }
 
@@ -35,9 +39,12 @@ async function processEmailJob(job: Job<RawEmailPayload>): Promise<void> {
     ? `${result.assignee.name} (${result.assignee.email})`
     : 'unassigned';
 
-  console.log(`[worker] Task created in Asana: ${result.permalink_url} (assigned to ${assigneeLabel})`);
+  log.info(
+    { gid: result.gid, url: result.permalink_url, assignee: assigneeLabel },
+    `Task created in Asana: ${result.permalink_url} (assigned to ${assigneeLabel})`,
+  );
 
-  await markProcessed(email.messageId);
+  await markProcessed(email.messageId, fallback);
 }
 
 let worker: Worker<RawEmailPayload> | null = null;
@@ -49,16 +56,16 @@ export function startWorker(): void {
   });
 
   worker.on('failed', (job, err) => {
-    console.error(`[worker] Job ${job?.id} failed: ${err.message}`);
+    log.error({ jobId: job?.id, err }, `Job ${job?.id} failed`);
   });
 
-  console.log('[worker] Worker listening on queue: email-tasks');
+  log.info('Worker listening on queue: email-tasks');
 }
 
 export async function stopWorker(): Promise<void> {
   if (worker) {
     await worker.close();
     worker = null;
-    console.log('[worker] Worker stopped');
+    log.info('Worker stopped');
   }
 }

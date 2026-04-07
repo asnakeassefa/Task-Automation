@@ -1,6 +1,7 @@
 import { ApiClient, TasksApi } from 'asana';
 import { config } from '../config/index.js';
 import { loadTeam, findAssignee, type TeamMember } from '../config/team.js';
+import { PROMPT_VERSION } from '../ai/prompts.js';
 import type { ExtractedTask } from '../validator/taskSchema.js';
 
 const client = ApiClient.instance;
@@ -41,6 +42,9 @@ export async function createAsanaTask(task: ExtractedTask): Promise<AsanaTaskRes
       projects: [config.asanaProjectId],
       ...(task.due_date && { due_on: task.due_date }),
       ...(assignee && { assignee: assignee.email }),
+      ...(config.asanaPromptVersionFieldGid && {
+        custom_fields: { [config.asanaPromptVersionFieldGid]: PROMPT_VERSION },
+      }),
     },
   };
 

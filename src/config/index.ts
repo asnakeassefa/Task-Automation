@@ -14,4 +14,8 @@ export const config = {
   gmailAppPassword: requireEnv('GMAIL_APP_PASSWORD'),
   gmailPollIntervalMs: parseInt(process.env.GMAIL_POLL_INTERVAL_MS ?? '30000', 10),
   redisUrl: requireEnv('REDIS_URL'),
+  port: parseInt(process.env.PORT ?? '3000', 10),
+  bullBoardUser: process.env.BULL_BOARD_USER ?? 'admin',
+  bullBoardPass: requireEnv('BULL_BOARD_PASS'),
+  asanaPromptVersionFieldGid: process.env.ASANA_PROMPT_VERSION_FIELD_GID ?? '',
 } as const;
