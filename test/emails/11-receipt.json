@@ -1,0 +1,17 @@
+{
+  "label": "Purchase receipt - should not be actionable",
+  "expected": {
+    "is_actionable": false,
+    "priority": "low",
+    "has_due_date": false
+  },
+  "data": {
+    "messageId": "fixture-11@example.com",
+    "subject": "Your receipt from AWS - March 2026",
+    "from": "Amazon Web Services <billing@aws.amazon.com>",
+    "fromEmail": "billing@aws.amazon.com",
+    "to": "admin@company.com",
+    "date": "2026-04-01T00:00:00Z",
+    "textBody": "Hello,\n\nThank you for your payment.\n\nInvoice Summary:\nAccount: 1234-5678-9012\nBilling Period: March 1 - March 31, 2026\n\nServices:\n  Amazon EC2: $1,245.67\n  Amazon S3: $89.34\n  Amazon RDS: $456.78\n  Amazon CloudFront: $123.45\n  Other Services: $67.89\n\nTotal: $1,983.13\nPayment Method: Visa ending in 4242\nPayment Status: Paid\n\nView your detailed invoice at https://console.aws.amazon.com/billing\n\nThis is an automated message. Please do not reply."
+  }
+}

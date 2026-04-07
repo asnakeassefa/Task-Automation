@@ -7,6 +7,8 @@ export const ExtractedTaskSchema = z.object({
   priority: z.enum(['low', 'medium', 'high']),
   is_actionable: z.boolean(),
   suggested_tags: z.array(z.string()),
+  suggested_role: z.string().nullable().default(null),
+  suggested_level: z.string().nullable().default(null),
 });
 
 export type ExtractedTask = z.infer<typeof ExtractedTaskSchema>;

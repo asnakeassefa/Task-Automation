@@ -1,0 +1,17 @@
+{
+  "label": "Meeting invite / calendar-style email",
+  "expected": {
+    "is_actionable": true,
+    "priority": "low",
+    "has_due_date": true
+  },
+  "data": {
+    "messageId": "fixture-10@example.com",
+    "subject": "Team Sync - Wednesday 2pm",
+    "from": "Henry Zhao <henry@company.com>",
+    "fromEmail": "henry@company.com",
+    "to": "engineering@company.com",
+    "date": "2026-04-06T10:00:00Z",
+    "textBody": "Hi team,\n\nReminder: We have our weekly team sync this Wednesday, April 8th at 2:00 PM EST.\n\nAgenda:\n1. Sprint retro (15 min)\n2. Demo of new search feature (20 min)\n3. Discuss on-call rotation changes (10 min)\n4. Open floor (15 min)\n\nPlease come prepared with your sprint updates.\n\nMeeting link: https://meet.google.com/abc-defg-hij\n\n— Henry"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "label": "Reply chain with lots of quoted text",
+  "expected": {
+    "is_actionable": true,
+    "priority": "medium",
+    "has_due_date": true
+  },
+  "data": {
+    "messageId": "fixture-08@example.com",
+    "subject": "Re: Re: Re: Budget approval for Q2 marketing campaign",
+    "from": "Frank Torres <frank@company.com>",
+    "fromEmail": "frank@company.com",
+    "to": "finance@company.com",
+    "date": "2026-04-06T15:45:00Z",
+    "textBody": "Approved on my end. Please process the PO by Wednesday April 8th.\n\n— Frank\n\n> On Apr 5, 2026, Sarah wrote:\n> Hi Frank,\n> \n> Just following up on the budget approval. We need to lock in the\n> conference sponsorship before the early bird deadline.\n> \n> The total cost is $12,500 broken down as:\n> - Booth space: $8,000\n> - Marketing materials: $2,500\n> - Travel (2 people): $2,000\n> \n> Can you approve this by end of week?\n> \n> Thanks,\n> Sarah\n>\n>> On Apr 3, 2026, Frank wrote:\n>> What's the breakdown? I need to see itemized costs before\n>> I can approve anything over $10K.\n>>\n>>> On Apr 2, 2026, Sarah wrote:\n>>> Hi Frank,\n>>>\n>>> We need budget approval for the Q2 marketing campaign.\n>>> The DevConf 2026 sponsorship is available and it's a great\n>>> opportunity to showcase our product.\n>>>\n>>> Let me know if you need more details.\n>>>\n>>> Sarah"
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Alice Chen",
+    "email": "alice@company.com",
+    "role": "backend",
+    "level": "senior"
+  },
+  {
+    "name": "Bob Martinez",
+    "email": "bob@company.com",
+    "role": "frontend",
+    "level": "junior"
+  }
+]

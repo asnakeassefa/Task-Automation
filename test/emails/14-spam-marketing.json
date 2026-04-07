@@ -1,0 +1,17 @@
+{
+  "label": "Spam / marketing email - should not be actionable",
+  "expected": {
+    "is_actionable": false,
+    "priority": "low",
+    "has_due_date": false
+  },
+  "data": {
+    "messageId": "fixture-14@example.com",
+    "subject": "🎉 Limited Time Offer: 50% OFF Enterprise Plan!",
+    "from": "SaaS Platform <deals@saasplatform.io>",
+    "fromEmail": "deals@saasplatform.io",
+    "to": "info@company.com",
+    "date": "2026-04-05T06:00:00Z",
+    "textBody": "Don't miss out!\n\nFor a limited time, get 50% off our Enterprise Plan. That's just $49/month instead of $99/month!\n\nWhat you get:\n✅ Unlimited users\n✅ Advanced analytics\n✅ Priority support\n✅ Custom integrations\n✅ SOC 2 compliance\n\nThis offer expires April 12th!\n\nClick here to claim your discount: https://saasplatform.io/promo/50off\n\nHappy building,\nThe SaaS Platform Team\n\nYou're receiving this because you signed up at saasplatform.io\nUnsubscribe: https://saasplatform.io/unsubscribe"
+  }
+}

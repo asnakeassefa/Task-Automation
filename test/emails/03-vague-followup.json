@@ -1,0 +1,17 @@
+{
+  "label": "Vague follow-up with implied deadline",
+  "expected": {
+    "is_actionable": true,
+    "priority": "medium",
+    "has_due_date": true
+  },
+  "data": {
+    "messageId": "fixture-03@example.com",
+    "subject": "Re: Onboarding process",
+    "from": "Bob Martinez <bob@company.com>",
+    "fromEmail": "bob@company.com",
+    "to": "hr@company.com",
+    "date": "2026-04-04T14:15:00Z",
+    "textBody": "Hey,\n\nFollowing up on our conversation last week. Can you send me the updated onboarding checklist? I want to make sure we have everything ready before the new hires start on April 14th.\n\nAlso, do we have a buddy system set up for them?\n\nThanks,\nBob"
+  }
+}

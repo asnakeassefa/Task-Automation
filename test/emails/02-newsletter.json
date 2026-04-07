@@ -1,0 +1,17 @@
+{
+  "label": "Newsletter - should not be actionable",
+  "expected": {
+    "is_actionable": false,
+    "priority": "low",
+    "has_due_date": false
+  },
+  "data": {
+    "messageId": "fixture-02@example.com",
+    "subject": "Weekly Tech Digest — Top Stories This Week",
+    "from": "TechNews <noreply@technews.io>",
+    "fromEmail": "noreply@technews.io",
+    "to": "subscriber@company.com",
+    "date": "2026-04-05T08:00:00Z",
+    "textBody": "Hello subscriber,\n\nHere's your weekly roundup of the top tech stories:\n\n1. AI models are getting smaller and faster\n2. New JavaScript runtime benchmarks released\n3. Open source funding models in 2026\n4. Docker announces new enterprise features\n\nRead more at technews.io\n\nYou received this because you subscribed to Weekly Tech Digest.\nUnsubscribe: https://technews.io/unsubscribe"
+  }
+}

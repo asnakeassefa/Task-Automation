@@ -1,0 +1,17 @@
+{
+  "label": "Email with multiple distinct action items",
+  "expected": {
+    "is_actionable": true,
+    "priority": "medium",
+    "has_due_date": true
+  },
+  "data": {
+    "messageId": "fixture-13@example.com",
+    "subject": "Action items from Monday standup",
+    "from": "James Wright <james@company.com>",
+    "fromEmail": "james@company.com",
+    "to": "team@company.com",
+    "date": "2026-04-06T10:15:00Z",
+    "textBody": "Hi team,\n\nHere are the action items from today's standup:\n\n1. Update the API documentation for the new endpoints (due: Wednesday)\n2. Fix the flaky integration test in the CI pipeline (due: Tuesday)\n3. Schedule a design review for the dashboard redesign (due: Thursday)\n4. Send the quarterly report to stakeholders (due: Friday April 10th)\n5. Review and merge the pending PRs from last week\n\nPlease update the Jira board as you complete each item.\n\nThanks,\nJames"
+  }
+}

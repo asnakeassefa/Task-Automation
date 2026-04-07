@@ -1,0 +1,17 @@
+{
+  "label": "Email with no subject line",
+  "expected": {
+    "is_actionable": true,
+    "priority": "medium",
+    "has_due_date": false
+  },
+  "data": {
+    "messageId": "fixture-04@example.com",
+    "subject": "",
+    "from": "Carlos Diaz <carlos@company.com>",
+    "fromEmail": "carlos@company.com",
+    "to": "dev@company.com",
+    "date": "2026-04-03T09:00:00Z",
+    "textBody": "Hey, can someone take a look at the login page? Users are reporting that the password reset link is broken. It was working fine yesterday but after the deploy it seems like the redirect URL is wrong.\n\nThanks,\nCarlos"
+  }
+}
