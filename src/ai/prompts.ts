@@ -1,4 +1,5 @@
 import type { RawEmailPayload } from '../parser/emailParser.js';
+import { sanitizeBody } from '../parser/sanitize.js';
 
 export const PROMPT_VERSION = 'v2';
 
@@ -10,7 +11,8 @@ function truncateBody(body: string): string {
 }
 
 export function buildExtractionPrompt(email: RawEmailPayload): string {
-  const body = truncateBody(email.textBody);
+  const cleanBody = sanitizeBody(email.textBody, email.htmlBody);
+  const body = truncateBody(cleanBody);
 
   return `
 You are a task extraction assistant integrated into a project management system.
