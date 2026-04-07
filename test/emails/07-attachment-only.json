@@ -1,0 +1,17 @@
+{
+  "label": "Email referencing attachments with no real body content",
+  "expected": {
+    "is_actionable": true,
+    "priority": "medium",
+    "has_due_date": false
+  },
+  "data": {
+    "messageId": "fixture-07@example.com",
+    "subject": "Design mockups for review",
+    "from": "Emma Wilson <emma@company.com>",
+    "fromEmail": "emma@company.com",
+    "to": "product@company.com",
+    "date": "2026-04-05T13:30:00Z",
+    "textBody": "See attached.\n\n- Emma"
+  }
+}

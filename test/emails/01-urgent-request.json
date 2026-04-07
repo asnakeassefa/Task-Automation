@@ -1,0 +1,17 @@
+{
+  "label": "Urgent request with explicit deadline",
+  "expected": {
+    "is_actionable": true,
+    "priority": "high",
+    "has_due_date": true
+  },
+  "data": {
+    "messageId": "fixture-01@example.com",
+    "subject": "URGENT: Server migration needs approval by Friday",
+    "from": "Alice Chen <alice@company.com>",
+    "fromEmail": "alice@company.com",
+    "to": "team@company.com",
+    "date": "2026-04-06T10:30:00Z",
+    "textBody": "Hi team,\n\nWe need to finalize the server migration plan ASAP. The cloud provider has given us a deadline of April 11th to confirm our instance types or we lose the reserved pricing.\n\nPlease review the attached migration doc and approve by end of day Friday.\nThe estimated cost saving is $2,400/month if we lock in now.\n\nKey decisions needed:\n1. Instance type (r6g.xlarge vs r6g.2xlarge)\n2. Region (us-east-1 vs eu-west-1)\n3. Backup retention policy (7 vs 30 days)\n\nLet me know if you have questions.\n\nThanks,\nAlice"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "label": "Very short email with minimal body",
+  "expected": {
+    "is_actionable": true,
+    "priority": "medium",
+    "has_due_date": false
+  },
+  "data": {
+    "messageId": "fixture-15@example.com",
+    "subject": "Invoice",
+    "from": "Karen Lee <karen@vendor.com>",
+    "fromEmail": "karen@vendor.com",
+    "to": "accounts@company.com",
+    "date": "2026-04-06T12:00:00Z",
+    "textBody": "Please process the attached invoice at your earliest convenience."
+  }
+}

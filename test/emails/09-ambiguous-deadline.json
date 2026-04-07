@@ -1,0 +1,17 @@
+{
+  "label": "Email with ambiguous relative deadline",
+  "expected": {
+    "is_actionable": true,
+    "priority": "medium",
+    "has_due_date": true
+  },
+  "data": {
+    "messageId": "fixture-09@example.com",
+    "subject": "Client presentation slides",
+    "from": "Grace Kim <grace@company.com>",
+    "fromEmail": "grace@company.com",
+    "to": "team@company.com",
+    "date": "2026-04-07T09:00:00Z",
+    "textBody": "Hi all,\n\nI need the updated slides for the Acme Corp presentation by end of week. They want to see our Q1 results and the product roadmap for the next 6 months.\n\nPlease make sure to include:\n- Revenue growth chart\n- Customer acquisition numbers\n- Product demo screenshots (latest UI)\n- Roadmap timeline\n\nLet's aim to have a draft ready by tomorrow so we can do a dry run on Thursday.\n\nThanks,\nGrace"
+  }
+}

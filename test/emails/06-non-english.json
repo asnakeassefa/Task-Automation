@@ -1,0 +1,17 @@
+{
+  "label": "Non-English email (Spanish)",
+  "expected": {
+    "is_actionable": true,
+    "priority": "medium",
+    "has_due_date": true
+  },
+  "data": {
+    "messageId": "fixture-06@example.com",
+    "subject": "Revisión del contrato - fecha límite viernes",
+    "from": "María López <maria@empresa.com>",
+    "fromEmail": "maria@empresa.com",
+    "to": "equipo@empresa.com",
+    "date": "2026-04-06T11:00:00Z",
+    "textBody": "Hola equipo,\n\nNecesito que revisen el contrato del nuevo proveedor antes del viernes 10 de abril. El documento está en la carpeta compartida.\n\nPuntos importantes a revisar:\n1. Cláusula de confidencialidad (sección 4.2)\n2. Términos de pago (sección 6.1)\n3. Período de prueba de 90 días\n\nPor favor confirmen cuando lo hayan revisado.\n\nGracias,\nMaría"
+  }
+}
