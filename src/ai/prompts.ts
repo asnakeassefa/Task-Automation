@@ -30,5 +30,6 @@ Rules:
 - Set priority to "high" if words like urgent, ASAP, critical, or immediate appear
 - Set is_actionable to false for newsletters, receipts, automated notifications, and marketing emails
 - Keep notes concise but complete — include names, links, and key details from the body
+- Always return a single JSON object, never an array. If multiple actions exist, combine them into one task.
 `.trim();
 }

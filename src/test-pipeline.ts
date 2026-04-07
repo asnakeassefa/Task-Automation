@@ -117,8 +117,12 @@ async function main() {
         console.log(`  Asana GID: ${result.task!.gid}`);
         console.log(`  URL: ${result.task!.permalink_url}\n`);
       }
-    } catch (error) {
-      console.error(`  ERROR: ${error instanceof Error ? error.message : error}\n`);
+    } catch (error: any) {
+      console.error(`  ERROR: ${error instanceof Error ? error.message : error}`);
+      if (error?.response?.body) {
+        console.error('  Asana details:', JSON.stringify(error.response.body, null, 2));
+      }
+      console.error();
     }
   }
 

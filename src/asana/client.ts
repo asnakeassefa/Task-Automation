@@ -39,7 +39,7 @@ export async function createAsanaTask(task: ExtractedTask): Promise<AsanaTaskRes
   };
 
   const response = await tasksApi.createTask(body, {
-    opt_fields: 'gid,name,permalink_url',
+    opt_fields: ['gid', 'name', 'permalink_url'],
   });
 
   return response.data as AsanaTaskResult;
