@@ -4,7 +4,8 @@
   "description": "Email → Gemini → Asana task automation",
   "type": "module",
   "scripts": {
-    "test-pipeline": "tsx src/test-pipeline.ts"
+    "test-pipeline": "tsx src/test-pipeline.ts",
+    "test-prompt": "tsx src/test-prompt.ts"
   },
   "engines": {
     "node": ">=20.0.0"

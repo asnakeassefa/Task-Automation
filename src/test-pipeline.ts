@@ -113,9 +113,11 @@ async function main() {
       if (result.skipped) {
         console.log('  Result: SKIPPED (not actionable)\n');
       } else {
+        const assignee = result.task!.assignee;
         console.log(`  Result: TASK CREATED`);
         console.log(`  Asana GID: ${result.task!.gid}`);
-        console.log(`  URL: ${result.task!.permalink_url}\n`);
+        console.log(`  URL: ${result.task!.permalink_url}`);
+        console.log(`  Assigned to: ${assignee ? `${assignee.name} (${assignee.email})` : '(unassigned)'}\n`);
       }
     } catch (error: any) {
       console.error(`  ERROR: ${error instanceof Error ? error.message : error}`);
